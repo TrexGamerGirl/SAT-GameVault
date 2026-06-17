@@ -8,7 +8,7 @@ class App:
     def __init__(self):
         pygame.init()
 
-        self.screen = pygame.display.set_mode((750, 460))
+        self.screen = pygame.display.set_mode((750, 460),pygame.RESIZABLE)
         pygame.display.set_caption("GameVault")
 
         base_dir = Path(__file__).resolve().parent
