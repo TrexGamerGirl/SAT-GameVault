@@ -99,16 +99,15 @@ class App:
                 if event.type == pygame.QUIT:
                     self.running = False
 
-                if event.type == pygame.KEYDOWN:
+                elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.running = False
 
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                     if event.button == 1:                        
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:  # left mouse click
                         if Quit_rect.collidepoint(event.pos):
                             print("Quit button clicked")
                             self.running = False
-
 
             pygame.display.flip()
 
