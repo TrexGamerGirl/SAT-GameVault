@@ -26,28 +26,86 @@ class App:
 
     def run(self):
         while self.running:
-            self.screen.fill((30, 30, 30))
+            self.screen.fill((0, 0, 0))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
             
             button_width = self.width  * 0.3
             button_length = self.length * 0.13
-            button_rect = pygame.rect.Rect(
+            Start_rect = pygame.rect.Rect(
                 self.width // 2 - button_width //2,
                 self.length // 3- button_length //3,
                 button_width,
                 button_length
             )
 
-            pygame.draw.rect(self.screen, (255, 255, 255), button_rect)
+            pygame.draw.rect(self.screen, (255, 255, 255), Start_rect)
             text = self.button_font.render("Start", True, (0, 0, 0))
-            text_rect = text.get_rect(center=button_rect.center)
-            
-
+            text_rect = text.get_rect(center=Start_rect.center)
             self.screen.blit(text, text_rect)
 
 
+
+            button_width = self.width  * 0.3
+            button_length = self.length * 0.13
+            Quit_rect = pygame.rect.Rect(
+                self.width // 2 - button_width //2,
+                self.length // 1.5- button_length //3,
+                button_width,
+                button_length
+            )
+
+
+            pygame.draw.rect(self.screen, (255, 255, 255), Quit_rect)
+            text = self.button_font.render("Quit", True, (0, 0, 0))
+            text_rect = text.get_rect(center=Quit_rect.center)
+            self.screen.blit(text, text_rect)
+
+
+            button_width = self.width  * 0.3
+            button_length = self.length * 0.13
+            Settings_rect = pygame.rect.Rect(
+                self.width // 2 - button_width //2,
+                self.length // 2- button_length //3,
+                button_width,
+                button_length
+            )
+
+
+            pygame.draw.rect(self.screen, (255, 255, 255), Settings_rect)
+            text = self.button_font.render("Settings", True, (0, 0, 0))
+            text_rect = text.get_rect(center=Settings_rect.center)
+            self.screen.blit(text, text_rect)
+
+
+            button_width = self.width  * 0.3
+            button_length = self.length * 0.13
+            button_rect = pygame.rect.Rect(
+                self.width // 2 - button_width //2,
+                self.length // 5- button_length //3,
+                button_width,
+                button_length
+            )
+
+
+            pygame.draw.rect(self.screen, (0, 0, 0), button_rect)
+            text = self.button_font.render("GameVault", True, (255, 255, 255))
+            text_rect = text.get_rect(center=button_rect.center)
+            self.screen.blit(text, text_rect)
+
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        self.running = False
+
+                if Quit_rect.collidepoint(event.pos):
+                            print("Quit button clicked")
+                            self.running = False
 
 
             pygame.display.flip()
