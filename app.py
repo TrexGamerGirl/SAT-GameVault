@@ -103,7 +103,9 @@ class App:
                     if event.key == pygame.K_ESCAPE:
                         self.running = False
 
-                if Quit_rect.collidepoint(event.pos):
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                     if event.button == 1:                        
+                        if Quit_rect.collidepoint(event.pos):
                             print("Quit button clicked")
                             self.running = False
 
