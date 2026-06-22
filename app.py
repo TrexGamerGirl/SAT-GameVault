@@ -27,10 +27,7 @@ class App:
     def run(self):
         while self.running:
             self.screen.fill((0, 0, 0))
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
-            
+
             button_width = self.width  * 0.3
             button_length = self.length * 0.13
             Start_rect = pygame.rect.Rect(
