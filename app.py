@@ -1,6 +1,5 @@
 import pygame
 from pathlib import Path
-
 #import repos
 #import screens
 
@@ -106,6 +105,11 @@ class App:
                             print("Quit button clicked")
                             self.running = False
 
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:  # left mouse click
+                        if Settings_rect.collidepoint(event.pos):
+                            print("Settings button clicked")
+                            
             pygame.display.flip()
 
         pygame.quit()
