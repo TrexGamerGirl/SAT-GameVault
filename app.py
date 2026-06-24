@@ -1,5 +1,7 @@
 import pygame
 from pathlib import Path
+
+from screens.settings import Settings
 #import repos
 #import screens
 
@@ -22,9 +24,17 @@ class App:
         self.button_font = pygame.font.Font(font_path, 40)
 
         self.running = True
+        
 
     def run(self):
+        clock = pygame.time.Clock()
         while self.running:
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    self.running = False
+            pygame.display.flip()
+            clock.tick(60)
             self.screen.fill((0, 0, 0))
 
             button_width = self.width  * 0.3
@@ -91,7 +101,7 @@ class App:
             self.screen.blit(text, text_rect)
 
 
-            for event in pygame.event.get():
+            for event in events:
                 if event.type == pygame.QUIT:
                     self.running = False
 
@@ -107,10 +117,11 @@ class App:
 
                         elif Settings_rect.collidepoint(event.pos):
                             print("Settings button clicked")
-                            
-            pygame.display.flip()
-
-        pygame.quit()
+                            self.change_screen(Settings(self))
+            
+    def change_screen(self, new_screen):
+        """Actionable method to transition screens"""
+        self.current_screen = new_screen
 
 
 if __name__ == "__main__":
