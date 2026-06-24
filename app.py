@@ -2,6 +2,7 @@ import pygame
 from pathlib import Path
 
 from screens.settings import Settings
+from screens.game_select import game_select
 #import repos
 #import screens
 
@@ -118,6 +119,10 @@ class App:
                         elif Settings_rect.collidepoint(event.pos):
                             print("Settings button clicked")
                             self.change_screen(Settings(self))
+
+                        elif Start_rect.collidepoint(event.pos):
+                            print("Start button clicked")
+                            self.change_screen(game_select(self))
             
     def change_screen(self, new_screen):
         """Actionable method to transition screens"""
